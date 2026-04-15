@@ -1,0 +1,17 @@
+<h2>Course Popularity</h2>
+
+<table border="1">
+    <tr>
+        <th>Course</th>
+        <th>Total Enrollments</th>
+        <th>Success Rate (%)</th>
+    </tr>
+
+    {% for c in data %}
+    <tr>
+        <td>{{ c.title }}</td>
+        <td>{{ c.total }}</td>
+        <td>{{ c.success_rate }}</td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Sessions</h2>
+
+<form method="GET" class="filter-box">
+    Instructor:
+    <input type="text" name="instructor">
+
+    From:
+    <input type="date" name="start_date">
+
+    To:
+    <input type="date" name="end_date">
+
+    <button type="submit">Filter</button>
+</form>
+
+<a class="btn" href="/sessions/add/">+ Schedule Session</a>
+
+<table>
+    <tr>
+        <th>Course</th>
+        <th>Date</th>
+        <th>Instructor</th>
+        <th>Mode</th>
+    </tr>
+
+    {% for s in sessions %}
+    <tr>
+        <td>{{ s.course.title }}</td>
+        <td>{{ s.session_date }}</td>
+        <td>{{ s.instructor_name }}</td>
+        <td>{{ s.mode }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

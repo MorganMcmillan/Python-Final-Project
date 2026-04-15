@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Training Portal</title>
+    <style>
+        body { font-family: Arial; margin: 0; background: #f4f4f4; }
+
+        .navbar {
+            background: #333;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            background: green;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            background: red;
+        }
+
+        .filter-box {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/employees/">Employees</a>
+    <a href="/courses/">Courses</a>
+    <a href="/sessions/">Sessions</a>
+    <a href="/enrollments/">Enrollments</a>
+    <a href="/analytics/">Analytics</a>
+</div>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
