@@ -1,0 +1,28 @@
+<h2>Employee Transcript</h2>
+
+<form method="GET">
+    <select name="employee">
+        {% for e in employees %}
+        <option value="{{ e.id }}">{{ e.full_name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">View</button>
+</form>
+
+{% if selected_employee %}
+<h3>{{ selected_employee.full_name }} ({{ selected_employee.department }})</h3>
+
+<table border="1">
+    <tr>
+        <th>Course</th>
+        <th>Status</th>
+    </tr>
+
+    {% for r in records %}
+    <tr>
+        <td>{{ r.session.course.title }}</td>
+        <td>{{ r.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}

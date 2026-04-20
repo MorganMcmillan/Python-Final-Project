@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Employees</h2>
+
+<form method="GET" class="filter-box">
+    <select name="department">
+        <option value="">All Departments</option>
+        <option value="IT">IT</option>
+        <option value="HR">HR</option>
+        <option value="Sales">Sales</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<a class="btn" href="/employees/add/">+ Add Employee</a>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for emp in employees %}
+    <tr>
+        <td>{{ emp.full_name }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.department }}</td>
+        <td>
+            <a class="btn" href="/employees/edit/{{ emp.id }}">Edit</a>
+            <a class="btn btn-danger" href="/employees/delete/{{ emp.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

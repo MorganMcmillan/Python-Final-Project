@@ -1,0 +1,15 @@
+<h2>Department Participation</h2>
+
+<table border="1">
+    <tr>
+        <th>Department</th>
+        <th>Completed Trainings</th>
+    </tr>
+
+    {% for d in data %}
+    <tr>
+        <td>{{ d.department }}</td>
+        <td>{{ d.completed }}</td>
+    </tr>
+    {% endfor %}
+</table>

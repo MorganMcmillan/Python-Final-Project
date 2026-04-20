@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Enrollments</h2>
+
+<form method="GET" class="filter-box">
+    <select name="status">
+        <option value="">All</option>
+        <option value="ENROLLED">ENROLLED</option>
+        <option value="COMPLETED">COMPLETED</option>
+        <option value="CANCELLED">CANCELLED</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<a class="btn" href="/enrollments/add/">+ Enroll Employee</a>
+
+<table>
+    <tr>
+        <th>Employee</th>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for e in enrollments %}
+    <tr>
+        <td>{{ e.employee.full_name }}</td>
+        <td>{{ e.session.course.title }}</td>
+        <td>{{ e.status }}</td>
+        <td>
+            <a class="btn" href="/enrollments/update/{{ e.id }}">Update</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

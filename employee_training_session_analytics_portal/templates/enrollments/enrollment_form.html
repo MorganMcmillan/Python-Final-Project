@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Enroll Employee</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    Employee:
+    <select name="employee">
+        {% for emp in employees %}
+        <option value="{{ emp.id }}">{{ emp.full_name }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    Session:
+    <select name="session">
+        {% for s in sessions %}
+        <option value="{{ s.id }}">{{ s.course.title }} - {{ s.session_date }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    Status:
+    <select name="status">
+        <option>ENROLLED</option>
+        <option>COMPLETED</option>
+        <option>CANCELLED</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class Employee(models.Model):
     DEPARTMENT_CHOICES = [
         ('IT', 'IT'),
@@ -10,6 +8,7 @@ class Employee(models.Model):
         ('FINANCE', 'Finance'),
         ('OPERATIONS', 'Operations'),
     ]
+
     full_name = models.CharField(max_length=100, unique=True)
     email = models.EmailField(unique=True)
     department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
@@ -25,6 +24,7 @@ class Course(models.Model):
         ('Soft Skills', 'Soft Skills'),
         ('Compliance', 'Compliance'),
     ]
+
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
     duration_minutes = models.IntegerField()
@@ -38,6 +38,7 @@ class Session(models.Model):
         ('Online', 'Online'),
         ('In-Person', 'In-Person'),
     ]
+
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='sessions')
     session_date = models.DateField()
     instructor_name = models.CharField(max_length=100)
@@ -53,6 +54,7 @@ class Enrollment(models.Model):
         ('COMPLETED', 'Completed'),
         ('CANCELLED', 'Cancelled'),
     ]
+
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='enrollments')
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='enrollments')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ENROLLED')

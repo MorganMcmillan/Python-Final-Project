@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Courses</h2>
+
+<form method="GET" class="filter-box">
+    <select name="category">
+        <option value="">All Categories</option>
+        <option value="Technical">Technical</option>
+        <option value="Security">Security</option>
+        <option value="Soft Skills">Soft Skills</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<a class="btn" href="/courses/add/">+ Add Course</a>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Duration</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for course in courses %}
+    <tr>
+        <td>{{ course.title }}</td>
+        <td>{{ course.category }}</td>
+        <td>{{ course.duration_minutes }} mins</td>
+        <td>
+            <a class="btn" href="/courses/edit/{{ course.id }}">Edit</a>
+            <a class="btn btn-danger" href="/courses/delete/{{ course.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
